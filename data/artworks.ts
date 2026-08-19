@@ -1,0 +1,19 @@
+import type { Artwork, ArtworkCollection, Money } from "@/types/commerce";
+
+export const launchCollection: ArtworkCollection = { id: "collection-launch-editions", name: "Launch Editions", slug: "launch-editions", description: "The inaugural S4R Fine Art collection." };
+
+/** Development-only display price. Replace with approved commercial pricing before checkout work begins. */
+const developmentPrice = (amount: number): Money => ({ amount, currency: "USD" });
+const artworkImage = (slug: string, title: string, width: number, height: number) => ({ src: `/artwork/${slug}.svg`, alt: `Development placeholder for ${title}`, width, height });
+
+const statement = "Artwork statement to be supplied by S4R Fine Art.";
+
+export const artworks: Artwork[] = [
+  { id: "artwork-the-armor-unlaced", slug: "the-armor-unlaced", title: "The Armor Unlaced", shortDescription: statement, story: statement, collection: launchCollection, heroImage: artworkImage("the-armor-unlaced", "The Armor Unlaced", 1200, 1500), galleryImages: [artworkImage("the-armor-unlaced", "The Armor Unlaced", 1200, 1500)], digitalVariant: { id: "digital-armor-unlaced", fulfillmentType: "DIGITAL", name: "Digital edition", price: developmentPrice(120), availability: "COMING_SOON" }, physicalVariants: [{ id: "canvas-armor-unlaced-18x24", fulfillmentType: "PHYSICAL", name: "Canvas edition", size: "18 × 24 in", width: 18, height: 24, unit: "in", price: developmentPrice(280), availability: "COMING_SOON" }], featured: true },
+  { id: "artwork-the-melting-shield", slug: "the-melting-shield", title: "The Melting Shield", shortDescription: statement, story: statement, collection: launchCollection, heroImage: artworkImage("the-melting-shield", "The Melting Shield", 1500, 1100), galleryImages: [artworkImage("the-melting-shield", "The Melting Shield", 1500, 1100)], digitalVariant: { id: "digital-melting-shield", fulfillmentType: "DIGITAL", name: "Digital edition", price: developmentPrice(120), availability: "COMING_SOON" }, physicalVariants: [{ id: "canvas-melting-shield-24x18", fulfillmentType: "PHYSICAL", name: "Canvas edition", size: "24 × 18 in", width: 24, height: 18, unit: "in", price: developmentPrice(280), availability: "COMING_SOON" }], featured: true },
+  { id: "artwork-the-open-vault", slug: "the-open-vault", title: "The Open Vault", shortDescription: statement, story: statement, collection: launchCollection, heroImage: artworkImage("the-open-vault", "The Open Vault", 1200, 1200), galleryImages: [artworkImage("the-open-vault", "The Open Vault", 1200, 1200)], digitalVariant: { id: "digital-open-vault", fulfillmentType: "DIGITAL", name: "Digital edition", price: developmentPrice(120), availability: "COMING_SOON" }, physicalVariants: [{ id: "canvas-open-vault-20x20", fulfillmentType: "PHYSICAL", name: "Canvas edition", size: "20 × 20 in", width: 20, height: 20, unit: "in", price: developmentPrice(280), availability: "COMING_SOON" }], featured: true },
+  { id: "artwork-the-unlocked-anchor", slug: "the-unlocked-anchor", title: "The Unlocked Anchor", shortDescription: statement, story: statement, collection: launchCollection, heroImage: artworkImage("the-unlocked-anchor", "The Unlocked Anchor", 1200, 1560), galleryImages: [artworkImage("the-unlocked-anchor", "The Unlocked Anchor", 1200, 1560)], digitalVariant: { id: "digital-unlocked-anchor", fulfillmentType: "DIGITAL", name: "Digital edition", price: developmentPrice(120), availability: "COMING_SOON" }, physicalVariants: [{ id: "canvas-unlocked-anchor-18x24", fulfillmentType: "PHYSICAL", name: "Canvas edition", size: "18 × 24 in", width: 18, height: 24, unit: "in", price: developmentPrice(280), availability: "COMING_SOON" }], featured: true },
+];
+
+export const featuredArtworks = artworks.filter((artwork) => artwork.featured);
+export const getArtworkBySlug = (slug: string): Artwork | undefined => artworks.find((artwork) => artwork.slug === slug);

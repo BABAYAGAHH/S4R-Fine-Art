@@ -1,0 +1,5 @@
+-- DEVELOPMENT ONLY — NOT CLIENT-APPROVED PRODUCTION DATA.
+--
+-- No fixture rows are inserted by the canonical initial migration. The current
+-- TypeScript seed catalog remains an isolated UI-development fixture until the
+-- approved client catalog is supplied for controlled ingestion.
